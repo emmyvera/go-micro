@@ -1,0 +1,34 @@
+# Ignore Go build files
+/bin/
+/pkg/
+/*.exe
+/*.out
+
+# Dependency directories
+/vendor/
+
+# IDE/editor-specific files
+*.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.test
+
+# Ignore Go coverage files
+*.cover
+
+# Ignore specific folders
+project/db-data/
+
+# Ignore files related to modules (optional if you're using Go Modules)
+go.sum
+go.work
+
+# Ignore user-defined cache files (optional)
+*.cache
