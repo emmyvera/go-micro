@@ -42,7 +42,7 @@
         let mailBtn = document.getElementById("mailBtn")
         let logBtn = document.getElementById("logBtn")
         let output = document.getElementById("output")
-        let payload = document.getElementById("payload")
+        let payload_sent = document.getElementById("payload")
         let received = document.getElementById("received")
 
         authBtn.addEventListener("click", function(){
@@ -67,7 +67,7 @@
             fetch("http:\/\/localhost:8080/handle", body)
             .then((resp) => resp.json())
             .then((data) => {
-                payload.innerHTML = JSON.stringify(payload, undefined, 4)
+                payload_sent.innerHTML = JSON.stringify(payload, undefined, 4)
                 received.innerHTML = JSON.stringify(data, undefined, 4);
 
                 if (data.error){
@@ -103,7 +103,7 @@
             fetch("http:\/\/localhost:8080/handle", body)
             .then((resp) => resp.json())
             .then((data) => {
-                payload.innerHTML = JSON.stringify(payload, undefined, 4)
+                payload_sent.innerHTML = JSON.stringify(payload, undefined, 4)
                 received.innerHTML = JSON.stringify(data, undefined, 4);
 
                 if (data.error){
@@ -126,7 +126,7 @@
             fetch("http:\/\/localhost:8080", body)
             .then((resp) => resp.json())
             .then((data) => {
-                payload.innerHTML = "empty post request"
+                payload_sent.innerHTML = "empty post request"
                 received.innerHTML = JSON.stringify(data, undefined, 4);
 
                 if (data.error){
@@ -164,7 +164,7 @@
             fetch("http:\/\/localhost:8080/handle", body)
             .then((resp) => resp.json())
             .then((data) => {
-                payload.innerHTML = JSON.stringify(payload, undefined, 4)
+                payload_sent.innerHTML = JSON.stringify(payload, undefined, 4)
                 received.innerHTML = JSON.stringify(data, undefined, 4);
 
                 if (data.error){
@@ -203,7 +203,7 @@
             fetch("http:\/\/localhost:8080/handle", body)
             .then((resp) => resp.json())
             .then((data) => {
-                payload.innerHTML = JSON.stringify(payload, undefined, 4)
+                payload_sent.innerHTML = JSON.stringify(payload, undefined, 4)
                 received.innerHTML = JSON.stringify(data, undefined, 4);
 
                 if (data.error){
