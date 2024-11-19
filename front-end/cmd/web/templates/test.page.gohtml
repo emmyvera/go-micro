@@ -11,6 +11,7 @@
                 <a href="javascript:void(0);" class="btn btn-outline-secondary" id="addUserBtn">Add User</a>
                 <a href="javascript:void(0);" class="btn btn-outline-secondary" id="logBtn">Test Log</a>
                 <a href="javascript:void(0);" class="btn btn-outline-secondary" id="mailBtn">Test Mail</a>
+                <a href="javascript:void(0);" class="btn btn-outline-secondary" id="logGBtn">Test GRPC</a>
 
                 <div id="output" class="mt-5" style="outline: 1px solid silver; padding: 2em;">
                     <span class="text-muted">Output shows here...</span>
@@ -41,6 +42,7 @@
         let addUserBtn = document.getElementById("addUserBtn")
         let mailBtn = document.getElementById("mailBtn")
         let logBtn = document.getElementById("logBtn")
+        let logGBtn = document.getElementById("logGBtn")
         let output = document.getElementById("output")
         let payload_sent = document.getElementById("payload")
         let received = document.getElementById("received")
@@ -116,6 +118,43 @@
                 output.innerHTML += `<br><br>Error: ${error}`
             })
         })
+
+        logGBtn.addEventListener("click", function(){
+
+            const payload = {
+                action: "log",
+                log: {
+                    name: "event",
+                    data: "Did Some Calculation With GRPC",
+                }
+            }
+
+            const headers = new Headers();
+            headers.append("Content-Type", "application/json")
+
+            const body = {
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers: headers
+            }
+
+            fetch("http:\/\/localhost:8080/log-grpc", body)
+            .then((resp) => resp.json())
+            .then((data) => {
+                payload_sent.innerHTML = JSON.stringify(payload, undefined, 4)
+                received.innerHTML = JSON.stringify(data, undefined, 4);
+
+                if (data.error){
+                    output.innerHTML += `<br><strong>Error:</strong> ${data.message}`
+                } else {
+                    output.innerHTML += `<br><strong>Response from broker service</strong> : ${data.message}`
+                }
+            })
+            .catch((error) => {
+                output.innerHTML += `<br><br>Error: ${error}`
+            })
+        })
+
 
         brokerBtn.addEventListener("click", function(){
 

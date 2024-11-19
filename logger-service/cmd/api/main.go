@@ -95,6 +95,7 @@ func (app *Config) rpcListen() error {
 			continue
 		}
 		go rpc.ServeConn(rpcConn)
+		go app.gRCListen()
 	}
 
 }
